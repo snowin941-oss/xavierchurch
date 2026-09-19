@@ -1,0 +1,676 @@
+﻿<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>புனித சவேரியார் ஆலயம் - சேதுக்குவாய்த்தான்</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background-color: #f8f9fa; }
+        header { background: linear-gradient(135deg, #1a3a52 0%, #2c5aa0 100%); color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { font-size: 1.5rem; font-weight: bold; display: flex; align-items: center; gap: 10px; }
+        nav ul { display: flex; list-style: none; gap: 1rem; flex-wrap: wrap; }
+        nav a { color: white; text-decoration: none; transition: opacity 0.3s; font-size: 0.85rem; }
+        nav a:hover { opacity: 0.8; }
+        .language-toggle { background: rgba(255,255,255,0.2); color: white; border: 1px solid white; padding: 0.4rem 0.8rem; border-radius: 5px; cursor: pointer; font-size: 0.85rem; transition: all 0.3s; margin-left: 1rem; }
+        .language-toggle:hover { background: rgba(255,255,255,0.3); }
+        .hero { height: 500px; display: flex; align-items: center; justify-content: center; text-align: center; color: white; position: relative; overflow: hidden; }
+        .hero img { position: absolute; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+        .hero-overlay { position: absolute; width: 100%; height: 100%; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)); z-index: 2; }
+        .hero-content { z-index: 10; animation: fadeInDown 1s ease; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.5); font-weight: 700; }
+        .hero p { font-size: 1.3rem; text-shadow: 1px 1px 4px rgba(0,0,0,0.5); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 3rem 0; background: white; margin-bottom: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        section h2 { font-size: 2.5rem; color: #1a3a52; margin-bottom: 2rem; text-align: center; position: relative; padding-bottom: 1rem; }
+        section h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 3px; background: linear-gradient(90deg, #c41e3a, #2c5aa0); border-radius: 2px; }
+        section h3 { font-size: 1.5rem; color: #1a3a52; margin-top: 2rem; margin-bottom: 1rem; }
+        section p { font-size: 1.05rem; color: #555; margin-bottom: 1rem; line-height: 1.8; }
+        .section-image { width: 100%; max-width: 600px; margin: 2rem auto; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease; display: block; object-fit: cover; max-height: 400px; }
+        .section-image:hover { transform: scale(1.03); }
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; margin: 2rem 0; }
+        .info-box { background: #f8f9fa; padding: 2rem; border-radius: 8px; border-left: 4px solid #c41e3a; margin: 2rem 0; }
+        .info-box strong { color: #1a3a52; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .gallery-item { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; border-top: 4px solid #c41e3a; }
+        .gallery-item:hover { transform: translateY(-8px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+        .gallery-item img { width: 100%; height: 220px; object-fit: cover; }
+        .gallery-item-content { padding: 1.5rem; }
+        .gallery-item h4 { color: #1a3a52; font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .view-button { background: linear-gradient(135deg, #c41e3a, #8b1428); color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 5px; cursor: pointer; font-size: 0.95rem; font-weight: 600; transition: background 0.3s ease; margin-top: 1rem; width: 100%; }
+        .view-button:hover { background: linear-gradient(135deg, #8b1428, #6b0f1f); }
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); animation: fadeIn 0.3s ease; }
+        .modal-content { position: relative; margin: auto; padding: 0; width: 90%; max-width: 800px; height: 80vh; top: 50%; transform: translateY(-50%); border-radius: 8px; overflow: hidden; animation: slideIn 0.3s ease; }
+        .modal-content img { width: 100%; height: 100%; object-fit: contain; }
+        .close { position: absolute; right: 20px; top: 20px; font-size: 2.5rem; font-weight: bold; color: white; cursor: pointer; background: rgba(0,0,0,0.5); border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; transition: background 0.3s; z-index: 2001; }
+        .close:hover { background: rgba(0,0,0,0.8); }
+        footer { background: #1a3a52; color: white; text-align: center; padding: 2rem; margin-top: 4rem; }
+        footer p { margin: 0.5rem 0; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(-50px) scale(0.9); } to { opacity: 1; transform: translateY(-50%) scale(1); } }
+        .voice-btn { background: linear-gradient(135deg, #2c5aa0, #1a3a52); color: white; border: none; padding: 0.5rem; border-radius: 50%; cursor: pointer; font-size: 1rem; width: 2.5rem; height: 2.5rem; display: inline-flex; align-items: center; justify-content: center; margin-left: 0.5rem; margin-right: 0.5rem; transition: all 0.3s; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        .voice-btn:hover { transform: scale(1.1); box-shadow: 0 4px 12px rgba(44, 90, 160, 0.4); }
+        .voice-btn.speaking { background: linear-gradient(135deg, #c41e3a, #8b1428); animation: pulse 1s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+        #chat-widget { position: fixed; right: 20px; bottom: 20px; width: 350px; height: 500px; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); z-index: 999; display: flex; flex-direction: column; }
+        .chat-header { background: linear-gradient(135deg, #2c5aa0, #1a3a52); color: white; padding: 1.5rem; border-radius: 12px 12px 0 0; text-align: center; }
+        .chat-messages { flex: 1; overflow-y: auto; padding: 1rem; display: flex; flex-direction: column; gap: 1rem; }
+        .chat-message { padding: 0.8rem; border-radius: 8px; max-width: 90%; word-wrap: break-word; }
+        .chat-message.user { background: #e3f2fd; color: #1a3a52; align-self: flex-end; }
+        .chat-message.bot { background: #f0f0f0; color: #333; align-self: flex-start; }
+        .chat-input-area { padding: 1rem; border-top: 1px solid #ddd; display: flex; gap: 0.5rem; }
+        .chat-input-area input { flex: 1; padding: 0.7rem; border: 1px solid #ddd; border-radius: 5px; font-size: 0.9rem; }
+        .chat-input-area button { background: #2c5aa0; color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 5px; cursor: pointer; font-weight: 600; }
+        .chat-input-area button:hover { background: #1a3a52; }
+        #toggle-chat { position: fixed; right: 20px; bottom: 20px; width: 60px; height: 60px; background: linear-gradient(135deg, #2c5aa0, #1a3a52); color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 998; }
+        #toggle-chat:hover { transform: scale(1.1); }
+        .hidden { display: none !important; }
+        @media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } .two-column { grid-template-columns: 1fr; } .gallery-grid { grid-template-columns: 1fr; } .voice-btn { padding: 0.4rem 0.8rem; font-size: 0.9rem; margin-left: 0.5rem; } #chat-widget { width: 300px; height: 400px; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span style="font-size: 1.8rem;">✝</span>
+                <span>புனித சவேரியார் ஆலயம்</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#church">சபை</a></li>
+                    <li><a href="#history">வரலாறு</a></li>
+                    <li><a href="#kp">கெபி</a></li>
+                    <li><a href="#groups">அமைப்புகள்</a></li>
+                    <li><a href="#buildings">கட்டடங்கள்</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <img src="images/புனித சவேரியார் ஆலயம்.jpeg" alt="சபை ஆலயம்">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>புனித சவேரியார் ஆலயம்</h1>
+            <p>சேதுக்குவாய்த்தான் – 628 207</p>
+        </div>
+    </div>
+
+    <section id="church">
+        <div class="container">
+            <h2 data-i18n="church-basic">பங்கின் அடிப்படை விவரங்கள்</h2>
+            <div class="two-column">
+                <div>
+                    <img src="images/பங்கின் அடிப்படை விவரங்கள்.jpeg" alt="பங்கின் அடிப்படை விவரங்கள்" class="section-image" onclick="openModal('images/பங்கின் அடிப்படை விவரங்கள்.jpeg')">
+                </div>
+                <div>
+                    <div class="info-box">
+                        <p><strong>பங்கின் பெயர்:</strong> புனித சவேரியார் ஆலயம் (St. Xavier's Church)</p>
+                        <p><strong>பாதுகாவலர்:</strong> புனித சவேரியார்</p>
+                        <p><strong>முகவரி:</strong> சேதுக்குவாய்த்தான் – 628 207 (குரும்பூர் வழி)</p>
+                        <p><strong>பாதுகாவலர் திருவிழா:</strong> டிசம்பர் 3-ம் தேதி</p>
+                    </div>
+                    <div style="background: #f0f2f5; padding: 1.5rem; border-left: 4px solid #c41e3a; margin-top: 1rem; font-style: italic; color: #666; border-radius: 4px;">
+                        "மனிதர் உலகம் முழுவதையும் ஆதாயமாக்கிக் கொண்டாலும் தம் வாழ்வையே இழப்பாரெனில் அவருக்குக் கிடைக்கும் பயன் என்ன? அவர் தம் வாழ்வுக்கு ஈடாக எதைக் கொடுப்பார்?" — மத்தேயு 16:26
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="history">
+        <div class="container">
+            <h2 data-i18n="history">வரலாறு</h2>
+            <div class="two-column">
+                <div>
+                    <img src="images/வரலாறு.jpeg" alt="வரலாறு" class="section-image" onclick="openModal('images/வரலாறு.jpeg')">
+                </div>
+                <div>
+                    <h3>பங்கு வரலாறு <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h3>
+                    <p>1909-ம் ஆண்டு இரண்டாவது முறை பிரகாசபுரம் பங்கு உருவாக்கப்பட்டது. 1914-ம் ஆண்டு வெளியான இனம் சார்ந்த பட்டியலில் சேதுக்குவாய்க்கால் (சேதுக்குவாய்த்தான்) விளங்குகிறது.</p>
+                    <p>இவ்வூரிலிருந்த புனித யாகப்பர் கோயில் 1746-ல் அருட்திரு. ஜோசப் கிரேனிங் என்பவர் கட்டினார். தற்போது புனித சவேரியார் பேரால் கட்டப்பட்டுள்ள பங்கு கோயில் 1914-ல் வெளியான மதுரை மிஷன் வரலாற்று ஏட்டில் "புதுக்கோயில்" என்று குறிப்பிடப்பட்டுள்ளது.</p>
+                </div>
+            </div>
+
+            <h3>🔔 நமது ஊரின் கோவில் மணி <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h3>
+            <p>இத்தாலியிலிருந்து கடல் வழியாக கப்பலில் கொண்டு வரப்பட்ட மூன்று மணிகளில் ஒன்று நமது ஊரில் நிறுவப்பட்டது. பல தலைமுறைகளாக அந்த மணி ஒலி நமது ஊரின் ஆன்மிக வாழ்க்கையுடன் இணைந்து இருந்து வருகிறது.</p>
+
+            <h3>🎉 ஊர் திருவிழா <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h3>
+            <div class="two-column">
+                <div>
+                    <img src="images/ஊர் திருவிழா.jpeg" alt="ஊர் திருவிழா" class="section-image" onclick="openModal('images/ஊர் திருவிழா.jpeg')">
+                </div>
+                <div>
+                    <p>நம் ஊரின் திருவிழா பழைமையான பாரம்பரியத்தையும், மக்களின் இறைநம்பிக்கையையும் எடுத்துக்காட்டும் முக்கியமான விழாவாகும்.</p>
+                    <p>முற்காலத்தில் டிசம்பர் 3-ஆம் தேதி நமது ஊர் திருவிழா கொண்டாடப்பட்டதாக நமது முன்னோர்களால் சொல்லப்பட்டு வருகிறது. பின்னர் ஒரு காலகட்டத்தில் பரவிய கொடிய நோய் காரணமாக, திருவிழா நடைபெறும் தேதி மாற்றப்பட்டதாகக் கூறப்படுகிறது.</p>
+                    <p>அதன் பின்னர், நம் ஊரின் திருவிழா தை மாதத்தின் முதல் வெள்ளிக்கிழமை கொடியேற்றத்துடன் தொடங்கி, தொடர்ந்து சிறப்பாக நடைபெற்று வருகிறது। திருவிழாவின் 9ஆம் திருவிழா நாளில் திருத்தேர் விழாவும், 10ஆம் திருவிழா நாளில் பெருவிழாவும் சிறப்பாகக் கொண்டாடப்படுகின்றன.</p>
+                    <p>முன்பு நமது ஊரில் செப்டம்பர் மாதத்தில் ஆசனம் நடைபெற்று வந்தது. பின்னர், அருட்திரு. Rainald J. Missier அவர்களின் காலத்தில், ஆசனம் ஜனவரி மாதத்திற்கு மாற்றப்பட்டது.</p>
+                </div>
+            </div>
+
+            <h3>✝️ திருவிழாவின் முக்கிய நிகழ்வுகள் <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h3>
+            <div class="info-box">
+                <p><strong>9ஆம் திருவிழா – தேர் திருவிழா:</strong> ஜனவரி மாதத்தின் கடைசி சனிக்கிழமை இரவு, நம் ஊரின் புனிதரின் திருத்தேர் சிறப்பாக அலங்கரிக்கப்பட்டு, பக்தர்களின் பங்கேற்புடன் ஊர்வலமாக எடுத்துச் செல்லப்படுகிறது.</p>
+                <p><strong>10ஆம் திருவிழா – திருவிழா நாள்:</strong> அடுத்த நாள் ஞாயிற்றுக்கிழமை திருவிழா சிறப்பாகக் கொண்டாடப்படுகிறது. திருப்பலி மற்றும் சிறப்பு வழிபாடுகள் நடைபெற்று, மக்கள் ஒன்றுகூடி இறை அருளைப் பெறுகின்றனர்.</p>
+                <p><strong>மறுநாள் – பொது அசனம்:</strong> திருவிழாவைத் தொடர்ந்து வரும் திங்கட்கிழமை பொது அசனம் நடைபெறும். ஊர் மக்கள் ஒன்றுகூடி பங்கேற்கும் இந்த நிகழ்வு, நம் ஊரின் ஒற்றுமையையும் பாரம்பரியத்தையும் வெளிப்படுத்துகிறது.</p>
+                <p>"புனித சவேரியாரே, எங்களுக்காக வேண்டிக்கொள்ளும்." 🙏</p>
+                <p>🍽️ <strong>காலை உணவு:</strong> 10ஆம் திருவிழா நாள்<br>🤝 <strong>பொது அசனம்:</strong> அடுத்த நாள்</p>
+            </div>
+
+            <h3>நூற்றாண்டை கடந்த நம் திருவிழா <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h3>
+            <p>நமது ஊரில் புனித சவேரியார் திருவிழா 1921-ஆம் ஆண்டு முதல் கொண்டாடப்பட்டு வருவதாகக் கூறப்படுகிறது. இதன் அடிப்படையில், 1921 முதல் கணக்கிடும்போது 2021-ஆம் ஆண்டு புனித சவேரியார் திருவிழாவின் 100-வது ஆண்டு நிறைவடைந்தது என்று கூறப்படுகிறது. ஆனால் அதற்கு எந்த ஆதாரமும் இல்லை.</p>
+            <p>அதேவேளை, நமது கோவில் வரலாற்றின்படி, 1746-ஆம் ஆண்டு அருட்திரு. ஜோசப் கிரேனிங் அவர்களால் பழைய ஆலயம் கட்டப்பட்டது. எனவே, அந்தக் காலத்திலேயே இப்பகுதியில் புனித யாகப்பர் திருவிழா அல்லது ஆலயத் திருவிழா கொண்டாடப்பட்டிருக்கலாம் என்று கருதப்படுகிறது.</p>
+            <p>மேலும், நமது ஊரில் சுமார் 300 ஆண்டுகளுக்கு முன்பே திருவிழா கொண்டாடப்பட்டிருக்கலாம் என்றும் வாய்மொழி வரலாற்றில் கூறப்படுகிறது.</p>
+
+            <h3>கோவில் கதவுகள் <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h3>
+            <p>நமது கோவில் கதவுகள் வெள்ளத்தில் அடித்து வரப்பட்ட மரங்களைப் பயன்படுத்தி செய்யப்பட்டவை என்று கூறப்படுகிறது. இந்த கதவுகள் நமது ஊரின் வரலாற்றின் சாட்சி ஆகும்.</p>
+
+            <h3>🚩 கொடிமரம் – வரலாறு <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h3>
+            <div class="two-column" style="margin-top: 1.5rem;">
+                <div>
+                    <img src="images/கொடிமரம்.jpeg" alt="கொடிமரம்" class="section-image" onclick="openModal('images/கொடிமரம்.jpeg')">
+                </div>
+                <div>
+                    <p>நமது ஊரில் உள்ள கொடிமரம் 2000 ஆம் ஆண்டு நிறுவப்பட்டது। அப்போது பங்குத்தந்தையாக இருந்த அருட்திரு. A. Remigius S. Leon அவர்களின் காலத்தில் இக்கொடிமரம் அமைக்கப்பட்டது.</p>
+                    <p>இதற்கு முன்பு, ஒரு கம்பையே கொடிமரமாகப் பயன்படுத்தி வந்தனர். பின்னர் 2000 ஆம் ஆண்டு புதிய கொடிமரம் நிறுவப்பட்டது.</p>
+                    <p>முன்பு நமது ஊரில் கொடிமரம், புனித அந்தோணியார் கெபி அருகில் அமைந்திருந்தது। <strong>தை மாதத்தின் முதல் வெள்ளிக்கிழமை கொடியேற்றம் நடைபெறும்.</strong></p>
+                </div>
+            </div>
+
+            <h3>🎭 கலை அரங்கம் <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h3>
+            <div class="two-column">
+                <div>
+                    <img src="images/கலை அரங்கம்.jpeg" alt="கலை அரங்கம்" class="section-image" onclick="openModal('images/கலை அரங்கம்.jpeg')">
+                </div>
+                <div>
+                    <p>புனித சவேரியார் பிறந்த 500வது ஆண்டு விழாவை நினைவுகூரும் வகையில் இந்தக் கலை அரங்கம் அமைக்கப்பட்டது. அப்போது பங்குத்தந்தையாக அருட்திரு. இருதயராஜ் அவர்கள் பணியாற்றினார். 28 ஜனவரி 2007 அன்று திறந்து வைக்கப்பட்டது.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kp">
+        <div class="container">
+            <h2 data-i18n="kp">பங்கில் உள்ள கெபிக்கள்</h2>
+            <p>நமது பங்கில் மூன்று முக்கியமான கெபிக்கள் (ஜெபத் தலங்கள்) உள்ளன, இறைமக்கள் ஜெபம் செய்தும் வேண்டுதல்களை சமர்ப்பிக்கும் புனிதமான இடங்கள்.</p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/சூசையப்பர் கெபி photos.jpeg" alt="சூசையப்பர் கெபி photos">
+                    <div class="gallery-item-content">
+                        <h4>சூசையப்பர் கெபி <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h4>
+                        <p><strong>தொடங்கிய ஆண்டு:</strong> 2026</p>
+                        <p><strong>பணிக்காலம்:</strong> அருட்திரு. Paul Roman S.</p>
+                        <p>நமது பங்கின் பிரதான கெபி ஆவது. புனித சூசையப்பர் நமது பாதுகாவலர் ஆவார்.</p>
+                        <button class="view-button" onclick="openModal('images/சூசையப்பர் கெபி photos.jpeg')">பார்க்க</button>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="images/புனித அந்தோணியார் கெபி.jpeg" alt="புனித அந்தோணியார் கெபி">
+                    <div class="gallery-item-content">
+                        <h4>புனித அந்தோணியார் கெபி <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h4>
+                        <p><strong>தொடங்கிய ஆண்டு:</strong> 1989</p>
+                        <p><strong>பணிக்காலம்:</strong> அருட்திரு. M.S. அந்தோணி</p>
+                        <p>புனித அந்தோணியார் நமது வழிகாட்டி ஆவார். பல்வேறு நோக்கங்களுக்கு இறைமக்கள் இங்கு வந்து ஜெபிக்கின்றனர்.</p>
+                        <button class="view-button" onclick="openModal('images/புனித அந்தோணியார் கெபி.jpeg')">பார்க்க</button>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="images/லூர்து மாதா கெபி.jpeg" alt="லூர்து மாதா கெபி">
+                    <div class="gallery-item-content">
+                        <h4>லூர்து மாதா கெபி <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h4>
+                        <p><strong>பூஜனை இடம்:</strong> அன்னை மரியாவை சிறப்பிக்கும் ஜெபத் தலம்</p>
+                        <p>இறைமக்கள் இங்கு வந்து ஜெபித்து, குடும்ப நலன் மற்றும் பல்வேறு வேண்டுதல்களை இறைவனிடம் சமர்ப்பிக்கின்றனர்.</p>
+                        <p>லூர்து மாதா நமது பாதுகாவலி ஆவார்.</p>
+                        <button class="view-button" onclick="openModal('images/லூர்து மாதா கெபி.jpeg')">பார்க்க</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="groups">
+        <div class="container">
+            <h2 data-i18n="groups">சபையின் அப்போஸ்தலத்துவ சபைகள்</h2>
+            <p>நமது சேதுக்குவாய்த்தான் ஊரின் ஆன்மிக மற்றும் சமூக வளர்ச்சியில் பல்வேறு அப்போஸ்தலத்துவ சபைகள் மற்றும் இயக்கங்கள் தொடர்ந்து முக்கிய பங்காற்றி வருகின்றன.</p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/ஜெபமாலை மாதா சபை.jpeg" alt="ஜெபமாலை மாதா சபை">
+                    <div class="gallery-item-content">
+                        <h4>ஜெபமாலை மாதா சபை <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h4>
+                        <p><strong>தொடங்கிய ஆண்டு:</strong> 1915</p>
+                        <p><strong>உறுப்பினர்கள்:</strong> திருமணம் ஆன பெண்கள்</p>
+                        <p>நமது ஊரின் பழைமையான ஆன்மிக அமைப்புகளில் ஒன்றாகும்.</p>
+                        <p><strong>திருவிழா:</strong> ஒவ்வொரு ஆண்டும் அக்டோபர் 31 அன்று</p>
+                        <button class="view-button" onclick="openModal('images/ஜெபமாலை மாதா சபை.jpeg')">பார்க்க</button>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="images/அமலோற்பவ மாதா சபை.jpeg" alt="அமலோற்பவ மாதா சபை">
+                    <div class="gallery-item-content">
+                        <h4>அமலோற்பவ மாதா சபை <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h4>
+                        <p><strong>தொடங்கிய ஆண்டு:</strong> 1930</p>
+                        <p><strong>உறுப்பினர்கள்:</strong> இளம் பெண்கள்</p>
+                        <p>ஆன்மிக சபையாக செயல்பட்டு வருகிறது।</p>
+                        <p><strong>திருவிழா:</strong> ஒவ்வொரு ஆண்டும் டிசம்பர் 8 அன்று</p>
+                        <button class="view-button" onclick="openModal('images/அமலோற்பவ மாதா சபை.jpeg')">பார்க்க</button>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="images/புனித சவேரியார் இளைஞர் சபை.jpeg" alt="புனித சவேரியார் இளைஞர் சபை">
+                    <div class="gallery-item-content">
+                        <h4>புனித சவேரியார் இளைஞர் சபை <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h4>
+                        <p><strong>தொடங்கிய ஆண்டு:</strong> 1930</p>
+                        <p><strong>உறுப்பினர்கள்:</strong> இளைஞர்கள்</p>
+                        <p>ஆன்மிகம் மற்றும் சமூகப் பணிகளில் ஈடுபடுத்தும் நோக்கம்।</p>
+                        <p><strong>திருவிழா:</strong> ஒவ்வொரு ஆண்டும் டிசம்பர் 3 அன்று</p>
+                        <button class="view-button" onclick="openModal('images/புனித சவேரியார் இளைஞர் சபை.jpeg')">பார்க்க</button>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="images/திருக்குடும்ப சபை.jpeg" alt="திருக்குடும்ப சபை">
+                    <div class="gallery-item-content">
+                        <h4>திருக்குடும்ப சபை <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h4>
+                        <p><strong>தொடங்கிய நாள்:</strong> 8 செப்டம்பர் 2023</p>
+                        <p><strong>உறுப்பினர்கள்:</strong> திருமணம் ஆன பெண்கள்</p>
+                        <p>ஆன்மிக சபையாக செயல்பட்டு வருகிறது।</p>
+                        <p><strong>திருவிழா:</strong> ஒவ்வொரு ஆண்டும் டிசம்பர் 30 அன்று</p>
+                        <button class="view-button" onclick="openModal('images/திருக்குடும்ப சபை.jpeg')">பார்க்க</button>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2rem;">புனித அந்தோணியார் சபை</h3>
+            <div class="two-column" style="margin-top: 1.5rem;">
+                <div>
+                    <img src="images/புனித அந்தோணியார் சபை.jpeg" alt="புனித அந்தோணியார் சபை" class="section-image" onclick="openModal('images/புனித அந்தோணியார் சபை.jpeg')">
+                </div>
+                <div>
+                    <div class="info-box">
+                        <p>திருமணம் ஆன ஆண்களைக் கொண்ட சபையாக புனித அந்தோணியார் சபை, நமது ஊரின் ஆன்மிக வாழ்வில் முக்கிய இடம் பெற்றுள்ளது।</p>
+                        <p><strong>திருவிழா:</strong> ஒவ்வொரு ஆண்டும் ஜூன் 13 அன்று சிறப்பாக நடைபெறுகிறது।</p>
+                        <p><strong>விசேஷம்:</strong> திருவிழா நாளன்று இரவு பொதுமக்களுக்கு அசனம் வழங்கப்படும்.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>இளைஞர் பங்கு <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h3>
+            <div class="info-box">
+                <p>நமது ஊரின் இளைஞர்கள், ஒவ்வொரு ஆண்டும் கிறிஸ்துமஸ் விழாவை முன்னிட்டு ஆலயத்தில் குடில் அமைத்து, பரிசுச் சீட்டு நிகழ்ச்சிகளையும் சிறப்பாக நடத்தி வருகின்றனர்.</p>
+                <p>இதனைத் தொடர்ந்து, புத்தாண்டு தினத்தில் பல்வேறு விளையாட்டுப் போட்டிகளையும் ஏற்பாடு செய்து, இளைஞர்கள் மற்றும் பொதுமக்களின் ஒற்றுமையையும் மகிழ்ச்சியையும் வளர்த்து வருகின்றனர்.</p>
+            </div>
+
+            <h3>கிறிஸ்தவ வாழ்க்கை அமைப்புகள் <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h3>
+            <div class="info-box">
+                <p>• பாலர் சபை (Holy Childhood)</p>
+                <p>• நற்கருணை வீரர் சபை (Eucharistic Crusaders)</p>
+                <p>• ஜெபமாலை மாதா சபை</p>
+                <p>• அமலோற்பவ மாதா சபை</p>
+                <p>• புனித அந்தோணியார் சபை</p>
+                <p>• வின்சென்ட் தே பவுல் சபை</p>
+                <p>• புனித சவேரியார் சபை</p>
+                <p>• திருக்குடும்ப சபை</p>
+            </div>
+
+            <h3>பங்கின் பங்கேற்பு அமைப்புகள் <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h3>
+            <div class="info-box">
+                <p>• அன்பியம்</p>
+                <p>• 15 மேய்ப்புப் பணிக்குழுக்கள் (Pastoral Commissions)</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="buildings">
+        <div class="container">
+            <h2 data-i18n="priests">பங்குத்தந்தையர்களின் வரிசை</h2>
+            <p>நம் ஊரின் ஆன்மிக வளர்ச்சியிலும், மக்களின் நலனிலும் பல பங்குத் தந்தையர்கள் அர்ப்பணிப்புடன் பணியாற்றியுள்ளனர்.</p>
+
+            <div class="info-box" style="column-count: 2; column-gap: 2rem;">
+                <p><strong>1. முதல் பங்குத்தந்தை</strong><br>அருட்திரு. அடைக்கலம் (1923–1931)</p>
+                <p><strong>2. இரண்டாம் பங்குத்தந்தை</strong><br>அருட்திரு. G.S. லூர்தாஸ் (1931–1962)</p>
+                <p><strong>3. மூன்றாம் பங்குத்தந்தை</strong><br>அருட்திரு. மரியானஸ் (1962–1971)</p>
+                <p><strong>4. நான்காம் பங்குத்தந்தை</strong><br>அருட்திரு. ரிச்சர்டு ரொட்ரிகோ (1971–1973)</p>
+                <p><strong>5. ஐந்தாம் பங்குத்தந்தை</strong><br>அருட்திரு. அல்போன்ஸ் மரிய காகூ (1973–1975)</p>
+                <p><strong>6. ஆறாம் பங்குத்தந்தை</strong><br>அருட்திரு. பிரான்சிஸ் (1975–1981)</p>
+                <p><strong>7. ஏழாம் பங்குத்தந்தை</strong><br>அருட்திரு. சேவியர் இக்னேஷியஸ் (1981–1985)</p>
+                <p><strong>8. எட்டாம் பங்குத்தந்தை</strong><br>அருட்திரு. அகஸ்டின் (1985–1991)</p>
+                <p><strong>9. ஒன்பதாம் பங்குத்தந்தை</strong><br>அருட்திரு. பீட்டர் ராஜா (1991)</p>
+                <p><strong>10. பத்தாம் பங்குத்தந்தை</strong><br>அருட்திரு. M.S. அந்தோணி (1991–1997)</p>
+                <p><strong>11. பதினொன்றாம் பங்குத்தந்தை</strong><br>அருட்திரு. பர்னபாஸ் (1997–1998)</p>
+                <p><strong>12. பன்னிரண்டாம் பங்குத்தந்தை</strong><br>அருட்திரு. ரெமிஜியுஸ் S. லியோன் (1998–2002)</p>
+                <p><strong>13. பதின்மூன்றாம் பங்குத்தந்தை</strong><br>அருட்திரு. M.J. இருதயராஜ் (2002–2006)</p>
+                <p><strong>14. பதினான்காம் பங்குத்தந்தை</strong><br>அருட்திரு. Rainald J. Missier (2007–2012)</p>
+                <p><strong>15. பதினைந்தாம் பங்குத்தந்தை</strong><br>அருட்திரு. M.G. Victor (2012–2013)</p>
+                <p><strong>16. பதினாறாம் பங்குத்தந்தை</strong><br>அருட்திரு. Alphonse D.S. (2013–2018)</p>
+                <p><strong>17. பதினேழாம் பங்குத்தந்தை</strong><br>அருட்திரு. Rayappan P. (2018–2020)</p>
+                <p><strong>18. பதினெட்டாம் பங்குத்தந்தை</strong><br>அருட்திரு. Thomas M. (2020–2023)</p>
+                <p><strong>19. பத்தொன்பதாம் பங்குத்தந்தை (தற்போது)</strong><br>அருட்திரு. Paul Roman S. (2023–தற்போது)</p>
+            </div>
+
+            <h2 style="margin-top: 3rem;" data-i18n="priests-house">பங்குத்தந்தையர் இல்லம் <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h2>
+            <div class="two-column">
+                <div>
+                    <img src="images/பங்குத்தந்தையர் இல்லம்.jpeg" alt="பங்குத்தந்தையர் இல்லம்" class="section-image" onclick="openModal('images/பங்குத்தந்தையர் இல்லம்.jpeg')">
+                </div>
+                <div>
+                    <p><strong>தொடங்கிய நாள்:</strong> 14 ஜனவரி 2002</p>
+                    <p><strong>தொடங்கியவர்:</strong> அருட்திரு. ரெமிஜியுஸ் S. லியோன்</p>
+                    <p><strong>கட்டிடம் முடிந்தவர்:</strong> அருட்திரு. M.J. இருதயராஜ்</p>
+                    <p><strong>ஆசீர்வாதம்:</strong> 29 ஆகஸ்ட் 2004 | ஆயர் Peter Fernando</p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 3rem;" data-i18n="convent">புனித அன்னம்மாள் கன்னியர் இல்லம் <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h2>
+            <div class="two-column">
+                <div>
+                    <img src="images/கன்னியர் இல்லம்.jpeg" alt="கன்னியர் இல்லம்" class="section-image" onclick="openModal('images/கன்னியர் இல்லம்.jpeg')">
+                </div>
+                <div>
+                    <p><strong>தொடங்கிய வருষம்:</strong> 21 நவம்பர் 1924</p>
+                    <p><strong>முதல் பங்குத்தந்தை:</strong> அருட்திரு. அடைக்கலம்</p>
+                    <p>இறைப்பணி, கல்விப்பணி மற்றும் சமூக சேவையில் முக்கிய பங்காற்றி வருகிறது।</p>
+                    <p><strong>முதல் மூன்று அருட்சகோதரிகள்:</strong></p>
+                    <p>1. அருட்சகோதரி ஆரோக்கிய மரியம்மாள்<br>2. அருட்சகோதரி அதரியான் மேரி<br>3. அருட்சகோதரி மோட்ச மரியம்மாள்</p>
+                    <p>100-க்கும் மேற்பட்ட அருட்சகோதரிகள் பணியாற்றி வருகிறார்கள்.</p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 3rem;" data-i18n="sub-church">புனித ஆரோக்கியநாதர் ஆலயம் (துணை பங்கு) <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h2>
+            <div class="two-column">
+                <div>
+                    <img src="images/புனித அரோக்கியநாதர் ஆலயம்.jpeg" alt="புனித அரோக்கியநாதர் ஆலயம்" class="section-image" onclick="openModal('images/புனித அரோக்கியநாதர் ஆலயம்.jpeg')">
+                </div>
+                <div>
+                    <p><strong>ஆலய வரலாறு:</strong></p>
+                    <p>• 1850: குடிசைக் கோவிலாக தொடங்கப்பட்டது</p>
+                    <p>• 1940: ஓட்டுக் கோவிலாக வளர்ச்சியடைந்தது</p>
+                    <p>• 1995: கற்காரைக் கோவிலாக வளர்ச்சியடைந்தது</p>
+                    <p>• 15 பிப்ரவரி 2021: அடிக்கல் நாட்டப்பட்டது</p>
+                    <p>• 16 ஆகஸ்ட் 2026: புதிய ஆலயம் புனிதப்படுத்தப்பட்டது</p>
+                    <p><strong>வழிபாட்டு நேரம்:</strong> வியாழக்கிழமை 3:00 மணி</p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 3rem;" data-i18n="convent-1924">புனித அன்னம்மாள் கன்னியர் இல்லம் – 1924 <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h2>
+            <p>நமது ஊரின் சமய மற்றும் சமூக வரலாற்றில் முக்கிய இடம் பெற்ற நிறுவனங்களில் புனித அன்னம்மாள் கன்னியர் இல்லமும் ஒன்றாகும். இது 21.11.1924ஆம் ஆண்டு தொடங்கப்பட்டு, இறைப்பணி, கல்விப்பணி மற்றும் சமூக சேவையில் முக்கிய பங்காற்றி வருகிறது.</p>
+            <p><strong>Congregation of the Sisters of St. Ann, Trichy (SAT)</strong></p>
+            <p>St. Ann's Convent, சேதுக்குவாய்த்தான் – 628 207, குரும்பூர் வழி</p>
+
+            <h2 style="margin-top: 3rem;" data-i18n="education">கல்வி நிறுவனங்கள் <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h2>
+            <p>நமது சேதுக்குவாய்த்தான் ஊரின் கல்வி வளர்ச்சியில் பள்ளிகள் முக்கிய பங்காற்றி வருகின்றன.</p>
+            <div class="info-box">
+                <p><strong>புனித சவேரியார் நடுநிலைப்பள்ளி, சேதுக்குவாய்த்தான் – 1928</strong></p>
+                <p>1928 ஆம் ஆண்டு தொடங்கப்பட்ட புனித சவேரியார் நடுநிலைப்பள்ளி, நமது ஊரின் கல்வி வரலாற்றில் குறிப்பிடத்தக்க இடம் பெற்ற கல்வி நிறுவனமாக விளங்குகிறது.</p>
+
+                <p><strong>புனித ஜோசப் தொடக்கப்பள்ளி, சேதுக்குவாய்த்தான் – 1924</strong></p>
+                <p>24/11/1924 அன்று தொடங்கப்பட்ட புனித ஜோசப் தொடக்கப்பள்ளி, சிறார்களின் கல்விப் பயணத்திற்கு அடித்தளமாக அமைந்துள்ளது.</p>
+            </div>
+
+            <h2 style="margin-top: 3rem;" data-i18n="flood">2023 ஆம் ஆண்டு வெள்ளப் பேரிடர் <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h2>
+            <p>19-12-2023 அன்று பெய்த கனமழையால் ஏற்பட்ட வெள்ளப்பெருக்கினால், நமது ஊரைச் சுற்றியுள்ள பல கிராமங்கள் வெள்ளத்தால் சூழப்பட்டன. குறிப்பாக, அருகிலுள்ள ஏரல் பகுதி பெருமளவில் வெள்ளத்தால் பாதிக்கப்பட்டது. ஏரல் மட்டுமின்றி, நமது ஊரைச் சுற்றியுள்ள பல பகுதிகளிலும் வெள்ளநீர் சூழ்ந்தது.</p>
+            <p><strong>அந்த இக்கட்டான சூழ்நிலையில், புனித சவேரியார் அருளால் நமது ஊர் காக்கப்பட்டது!</strong></p>
+            <p>அந்த வெள்ளப்பெருக்கின்போது, நமது ஊரின் பெரியவர்கள் மற்றும் பொதுமக்கள் சிறப்பாக செயல்பட்டு, வெள்ளத்தால் பாதிக்கப்பட்ட மக்களுக்கு உதவினர். அவர்களுக்காக நமது ஊரில் உள்ள மண்டபம் மற்றும் பள்ளிக் கட்டிடங்கள் தங்குமிடமாக வழங்கப்பட்டன. மேலும், பாதிக்கப்பட்ட மக்களுக்கு உணவு வழங்கியும், தேவையான உதவிகளைச் செய்தும் நமது ஊர் மக்கள் பெரும் சேவையாற்றினர்.</p>
+        </div>
+    </section>
+
+    <section style="background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);">
+        <div class="container">
+            <h2>திருப்பலி மற்றும் வழிபாட்டு நேரங்கள்</h2>
+            <div class="info-box">
+                <p><strong>ஞாயிற்றுக்கிழமை:</strong> காலை 7:00 மணி</p>
+                <p><strong>வார நாட்கள்:</strong> காலை 6:00 மணி</p>
+                <p><strong>ஒவ்வொரு வெள்ளிக்கிழமையும்:</strong> மதியம் 3:00 மணி (தெய்வ இரக்க நவநாள்)</p>
+                <p><strong>ஒவ்வொரு வியாழக்கிழமையும்:</strong> புனித அரோக்கியநாதர் ஆலயத்தில் வழிபாடு</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modalImage" src="" alt="Large Image">
+        </div>
+    </div>
+
+    <section id="location" style="background: linear-gradient(135deg, #f8f9fa, #e3f2fd);">
+        <div class="container">
+            <h2 data-i18n="location">📍 ஆலயத்தின் இருப்பிடம் <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h2>
+            <div class="two-column" style="align-items: center;">
+                <div>
+                    <div class="info-box" style="background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <h3 style="color: #1a3a52; margin-top: 0;">🏰 புனித சவேரியார் ஆலயம்</h3>
+                        <p><strong>📮 முகவரி:</strong></p>
+                        <p>சேதுக்குவாய்த்தான்</p>
+                        <p>குரும்பூர் வழி</p>
+                        <p><strong>핀 கோடு:</strong> 628 207</p>
+                        <p><strong>மாவட்டम्:</strong> Thoothukudi</p>
+                        <p><strong>மாநிலம்:</strong> தமிழ்நாடு, இந்தியா</p>
+                        <p style="margin-top: 1.5rem; color: #c41e3a;"><strong>📱 தொடர்பு:</strong> @Snowin - 6382835276</p>
+                        <a href="https://maps.google.com/?q=Sethukkuvaythan,+628207" target="_blank" style="display: inline-block; background: #2c5aa0; color: white; padding: 0.8rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: 600; margin-top: 1rem; transition: background 0.3s;">🗺️ Google Maps இல் பார்க்க</a>
+                    </div>
+                </div>
+                <div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3903.8561385642607!2d79.45123771549398!3d11.496158391860916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a535555555555%3A0x555555555555!2sSethukkuvaythan!5e0!3m2!1sen!2sin!4v1234567890" width="100%" height="400" style="border:0; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;">
+            <div>
+                <p>&copy; 2026 புனித சவேரியார் ஆலயம் - St. Xavier's Church, Sethukkuvaythan</p>
+                <p>"நீங்கள் உலகெங்கும் சென்று, எல்லாப் படைப்பினருக்கும் நற்செய்தியைப் பறைசாற்றுங்கள்." — மாற்கு 16:15</p>
+            </div>
+            <div style="text-align: right;">
+                <h4 style="margin-bottom: 0.5rem;">📞 தொடர்பு</h4>
+                <a href="tel:+916382835276" style="display: inline-block; background: #c41e3a; color: white; padding: 0.8rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: 600; transition: all 0.3s; font-size: 1rem;">@Snowin 📱</a>
+            </div>
+        </div>
+    </footer>
+
+    <button id="toggle-chat">💬</button>
+    <div id="chat-widget" class="hidden">
+        <div class="chat-header">
+            <h3 style="margin: 0; font-size: 1.2rem;">🤖 AI ஆலய உதவி</h3>
+            <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem;">ஆலயம் பற்றி கேளுங்கள்</p>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="chat-message bot">
+                வணக்கம்! 🙏 புனித சவேரியார் ஆலயம் பற்றி நீங்கள் கேட்க விரும்பும் ஏதேனும் கேள்விகள் உள்ளவா?
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="கேள்வியைக் கேளுங்கள்..." />
+            <button onclick="sendMessage()">அனுப்பு</button>
+        </div>
+    </div>
+
+    <script>
+        function openModal(imageSrc) {
+            document.getElementById('imageModal').style.display = 'block';
+            document.getElementById('modalImage').src = imageSrc;
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target == modal) closeModal();
+        }
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') closeModal();
+        });
+
+        let currentSpeech = null;
+        function speakText(text, btn) {
+            if (currentSpeech) {
+                speechSynthesis.cancel();
+                currentSpeech = null;
+                if (btn) btn.classList.remove('speaking');
+                return;
+            }
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'ta-IN';
+            utterance.rate = 0.85;
+            utterance.pitch = 1.2;
+            const voices = speechSynthesis.getVoices();
+            const femaleVoice = voices.find(v => v.name.includes('Female') || v.name.includes('female') || v.name.includes('woman')) || voices.find(v => v.lang.includes('ta')) || voices[0];
+            utterance.voice = femaleVoice;
+            if (btn) btn.classList.add('speaking');
+            utterance.onend = () => {
+                currentSpeech = null;
+                if (btn) btn.classList.remove('speaking');
+            };
+            currentSpeech = utterance;
+            speechSynthesis.speak(utterance);
+        }
+
+        function speakHeadingContent(btn) {
+            if (currentSpeech) {
+                speechSynthesis.cancel();
+                currentSpeech = null;
+                if (btn) btn.classList.remove('speaking');
+                return;
+            }
+            const heading = btn.closest('h1, h2, h3, h4, h5, h6');
+            if (!heading) return;
+            let content = heading.textContent.replace(/🔊/g, '').trim() + '. ';
+            let sibling = heading.nextElementSibling;
+            const headingLevel = parseInt(heading.tagName[1]);
+            while (sibling) {
+                if (sibling.tagName.match(/^H[1-6]$/)) {
+                    const siblingLevel = parseInt(sibling.tagName[1]);
+                    if (siblingLevel <= headingLevel) break;
+                }
+                if (sibling.tagName === 'P' || sibling.tagName === 'DIV') {
+                    content += sibling.textContent.trim() + ' ';
+                }
+                sibling = sibling.nextElementSibling;
+            }
+            speakText(content, btn);
+        }
+
+        let currentLanguage = 'tamil';
+
+        const translations = {
+            'church-basic': { tamil: 'பங்கின் அடிப்படை விவரங்கள்', english: 'Church Basic Information' },
+            'history': { tamil: 'வரலாறு', english: 'History' },
+            'kp': { tamil: 'பங்கில் உள்ள கெபிக்கள்', english: 'Chapels in Church' },
+            'groups': { tamil: 'சபையின் அப்போஸ்தலத்துவ சபைகள்', english: 'Apostolic Groups' },
+            'priests': { tamil: 'பங்குத்தந்தையர்களின் வரிசை', english: 'Parish Priests' },
+            'priests-house': { tamil: 'பங்குத்தந்தையர் இல்லம்', english: 'Priests House' },
+            'convent': { tamil: 'புனித அன்னம்மாள் கன்னியர் இல்லம்', english: 'St. Annes Convent' },
+            'sub-church': { tamil: 'புனித ஆரோக்கியநாதர் ஆலயம் (துணை பங்கு)', english: 'St. Arokiyanadar Church' },
+            'convent-1924': { tamil: 'புனித அன்னம்மாள் கன்னியர் இல்லம் – 1924', english: 'St. Annes Convent - 1924' },
+            'education': { tamil: 'கல்வி நிறுவனங்கள்', english: 'Educational Institutions' },
+            'flood': { tamil: '2023 ஆம் ஆண்டு வெள்ளப் பேரிடர்', english: '2023 Flood Disaster' },
+            'location': { tamil: 'ஆலயத்தின் இருப்பிடம்', english: 'Church Location' }
+        };
+
+        function toggleLanguage() {
+            if (currentLanguage === 'tamil') {
+                currentLanguage = 'english';
+                document.querySelector('.language-toggle').textContent = '🌐 Tamil';
+            } else {
+                currentLanguage = 'tamil';
+                document.querySelector('.language-toggle').textContent = '🌐 English';
+            }
+            updatePageLanguage();
+        }
+
+        function updatePageLanguage() {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[key]) {
+                    el.textContent = translations[key][currentLanguage];
+                }
+            });
+        }
+
+        document.getElementById('toggle-chat').onclick = function() {
+            const widget = document.getElementById('chat-widget');
+            const btn = document.getElementById('toggle-chat');
+            widget.classList.toggle('hidden');
+            btn.classList.toggle('hidden');
+        }
+
+        document.getElementById('chat-input').onkeypress = function(e) {
+            if (e.key === 'Enter') sendMessage();
+        }
+
+        const churchData = {
+            history: 'புனித சவேரியார் ஆலயம் சேதுக்குவாய்த்தானில் உள்ளது. 1909-ல் உருவாக்கப்பட்டது.',
+            location: 'சேதுக்குவாய்த்தான் - 628 207',
+            patron: 'புனித சவேரியார்',
+            festival: 'டிசம்பர் 3-ம் தேதி பாதுகாவலர் திருவிழா',
+            chapels: 'சூசையப்பர் கெபி, புனித அந்தோணியார் கெபி, லூர்து மாதா கெபி',
+            organizations: 'ஜெபமாலை மாதா சபை, அமலோற்பவ மாதா சபை, புனித சவேரியார் இளைஞர் சபை, திருக்குடும்ப சபை'
+        };
+
+        function getAIResponse(userMessage) {
+            const msg = userMessage.toLowerCase();
+
+            if (msg.includes('வரலாறு') || msg.includes('history')) {
+                return 'இந்த ஆலயம் 1909-ம் ஆண்டு பிரகாசபுரம் பங்கு உருவாக்கப்பட்டது. 1914-ல் வெளியான பட்டியலில் சேதுக்குவாய்த்தான் குறிப்பிடப்பட்டுள்ளது.';
+            }
+            if (msg.includes('முகவரி') || msg.includes('address') || msg.includes('எங்கே')) {
+                return 'ஆலயம் சேதுக்குவாய்த்தான் - 628 207 (குரும்பூர் வழி) என்ற இடத்தில் உள்ளது.';
+            }
+            if (msg.includes('பாதுகாவலர்') || msg.includes('patron')) {
+                return 'புனித சவேரியார் நமது ஆலயத்தின் பாதுகாவலர். பாதுகாவலர் திருவிழா டிசம்பர் 3-ம் தேதி கொண்டாடப்படுகிறது.';
+            }
+            if (msg.includes('கெபி') || msg.includes('chapel')) {
+                return 'ஆலயத்தில் மூன்று பிரதான கெபிகள் உள்ளன: சூசையப்பர் கெபி, புனித அந்தோணியார் கெபி, லூர்து மாதா கெபி.';
+            }
+            if (msg.includes('சபை') || msg.includes('organization')) {
+                return 'ஆலயத்தில் பல அப்போஸ்தலத்துவ சபைகள் உள்ளன: ஜெபமாலை மாதா சபை, அமலோற்பவ மாதா சபை, புனித சவேரியார் இளைஞர் சபை, திருக்குடும்ப சபை.';
+            }
+            if (msg.includes('திருவிழா') || msg.includes('festival')) {
+                return 'ஆலயத்தின் பாதுகாவலர் திருவிழா டிசம்பர் 3-ம் தேதி கொண்டாடப்படுகிறது. ஊர் திருவிழாவும் வருடம் நடைபெறுகிறது.';
+            }
+            if (msg.includes('நன்றி') || msg.includes('thanks')) {
+                return 'வரவிருக்கிற நாட்களில் ஆலயத்தைப் பார்வையிட வந்தால் மகிழ்வு. 🙏';
+            }
+
+            return 'நன்றி உங்கள் கேள்விக்கு! ஆலயம் பற்றி மேலும் தெரிய விரும்பினால், வாருங்கள் சாதாரண வேளையில் பார்வையிட.';
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+            if (!message) return;
+
+            const messagesDiv = document.getElementById('chat-messages');
+
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chat-message user';
+            userMsg.textContent = message;
+            messagesDiv.appendChild(userMsg);
+
+            input.value = '';
+
+            setTimeout(() => {
+                const botResponse = getAIResponse(message);
+                const botMsg = document.createElement('div');
+                botMsg.className = 'chat-message bot';
+                botMsg.textContent = botResponse;
+                messagesDiv.appendChild(botMsg);
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+                speakText(botResponse);
+            }, 500);
+        }
+    </script>
+</body>
+</html>
