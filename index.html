@@ -67,7 +67,7 @@
         #toggle-chat { position: fixed; right: 20px; bottom: 20px; width: 60px; height: 60px; background: linear-gradient(135deg, #2c5aa0, #1a3a52); color: white; border: none; border-radius: 50%; cursor: pointer; font-size: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 998; }
         #toggle-chat:hover { transform: scale(1.1); }
         .hidden { display: none !important; }
-        @media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } .two-column { grid-template-columns: 1fr; } .gallery-grid { grid-template-columns: 1fr; } .voice-btn { padding: 0.4rem 0.8rem; font-size: 0.9rem; margin-left: 0.5rem; } #chat-widget { width: 300px; height: 400px; } }
+        @media (max-width: 768px) { body { overflow-x: hidden; } .hero h1 { font-size: 2.5rem; } .two-column { grid-template-columns: 1fr; } .gallery-grid { grid-template-columns: 1fr; } .voice-btn { padding: 0.4rem 0.8rem; font-size: 0.9rem; margin-left: 0.5rem; } #chat-widget { width: 90vw; height: 400px; max-width: 350px; } section { margin-bottom: 1rem; } .container { padding: 0 15px; } }
     </style>
 </head>
 <body>
@@ -131,13 +131,14 @@
                     <h3>பங்கு வரலாறு <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h3>
                     <p>1909-ம் ஆண்டு இரண்டாவது முறை பிரகாசபுரம் பங்கு உருவாக்கப்பட்டது. 1914-ம் ஆண்டு வெளியான இனம் சார்ந்த பட்டியலில் சேதுக்குவாய்க்கால் (சேதுக்குவாய்த்தான்) விளங்குகிறது.</p>
                     <p>இவ்வூரிலிருந்த புனித யாகப்பர் கோயில் 1746-ல் அருட்திரு. ஜோசப் கிரேனிங் என்பவர் கட்டினார். தற்போது புனித சவேரியார் பேரால் கட்டப்பட்டுள்ள பங்கு கோயில் 1914-ல் வெளியான மதுரை மிஷன் வரலாற்று ஏட்டில் "புதுக்கோயில்" என்று குறிப்பிடப்பட்டுள்ளது.</p>
+                    <p>ஆறுமுகநேரி, திருவைகுண்டம், செய்துங்கநல்லூர் ஆகியவை முன்பு இப்பங்கின் இணை ஊர்களாக இருந்ததாகக் குறிப்பிடுகின்றது.</p>
                 </div>
             </div>
 
-            <h3>🔔 நமது ஊரின் கோவில் மணி <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h3>
-            <p>இத்தாலியிலிருந்து கடல் வழியாக கப்பலில் கொண்டு வரப்பட்ட மூன்று மணிகளில் ஒன்று நமது ஊரில் நிறுவப்பட்டது. பல தலைமுறைகளாக அந்த மணி ஒலி நமது ஊரின் ஆன்மிக வாழ்க்கையுடன் இணைந்து இருந்து வருகிறது.</p>
+            <h3> நமது ஊரின் கோவில் மணி <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h3>
+            <p>நம் முன்னோர்களால் சொல்லப்பட்டு வரும் வரலாற்றுச் செய்திப்படி, இத்தாலியிலிருந்து கடல் வழியாக கப்பலில் கொண்டு வரப்பட்ட மூன்று மணிகளில் ஒன்று நமது ஊரில் நிறுவப்பட்டது. பல தலைமுறைகளாக அந்த மணி ஒலி நமது ஊரின் ஆன்மிக வாழ்க்கையுடன் இணைந்து இருந்து வருகிறது.</p>
 
-            <h3>🎉 ஊர் திருவிழா <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h3>
+            <h3> ஊர் திருவிழா <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h3>
             <div class="two-column">
                 <div>
                     <img src="images/ஊர் திருவிழா.jpeg" alt="ஊர் திருவிழா" class="section-image" onclick="openModal('images/ஊர் திருவிழா.jpeg')">
@@ -146,17 +147,17 @@
                     <p>நம் ஊரின் திருவிழா பழைமையான பாரம்பரியத்தையும், மக்களின் இறைநம்பிக்கையையும் எடுத்துக்காட்டும் முக்கியமான விழாவாகும்.</p>
                     <p>முற்காலத்தில் டிசம்பர் 3-ஆம் தேதி நமது ஊர் திருவிழா கொண்டாடப்பட்டதாக நமது முன்னோர்களால் சொல்லப்பட்டு வருகிறது. பின்னர் ஒரு காலகட்டத்தில் பரவிய கொடிய நோய் காரணமாக, திருவிழா நடைபெறும் தேதி மாற்றப்பட்டதாகக் கூறப்படுகிறது.</p>
                     <p>அதன் பின்னர், நம் ஊரின் திருவிழா தை மாதத்தின் முதல் வெள்ளிக்கிழமை கொடியேற்றத்துடன் தொடங்கி, தொடர்ந்து சிறப்பாக நடைபெற்று வருகிறது। திருவிழாவின் 9ஆம் திருவிழா நாளில் திருத்தேர் விழாவும், 10ஆம் திருவிழா நாளில் பெருவிழாவும் சிறப்பாகக் கொண்டாடப்படுகின்றன.</p>
-                    <p>முன்பு நமது ஊரில் செப்டம்பர் மாதத்தில் ஆசனம் நடைபெற்று வந்தது. பின்னர், அருட்திரு. Rainald J. Missier அவர்களின் காலத்தில், ஆசனம் ஜனவரி மாதத்திற்கு மாற்றப்பட்டது.</p>
+                    <p>முன்பு நமது ஊரில் செப்டம்பர் மாதத்தில் அசனம் நடைபெற்று வந்தது. பின்னர், அருட்திரு. Rainald J. Missier அவர்களின் காலத்தில், அசனம் ஜனவரி மாதத்திற்கு மாற்றப்பட்டது.</p>
                 </div>
             </div>
 
-            <h3>✝️ திருவிழாவின் முக்கிய நிகழ்வுகள் <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h3>
+            <h3> திருவிழாவின் முக்கிய நிகழ்வுகள் <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h3>
             <div class="info-box">
-                <p><strong>9ஆம் திருவிழா – தேர் திருவிழா:</strong> ஜனவரி மாதத்தின் கடைசி சனிக்கிழமை இரவு, நம் ஊரின் புனிதரின் திருத்தேர் சிறப்பாக அலங்கரிக்கப்பட்டு, பக்தர்களின் பங்கேற்புடன் ஊர்வலமாக எடுத்துச் செல்லப்படுகிறது.</p>
-                <p><strong>10ஆம் திருவிழா – திருவிழா நாள்:</strong> அடுத்த நாள் ஞாயிற்றுக்கிழமை திருவிழா சிறப்பாகக் கொண்டாடப்படுகிறது. திருப்பலி மற்றும் சிறப்பு வழிபாடுகள் நடைபெற்று, மக்கள் ஒன்றுகூடி இறை அருளைப் பெறுகின்றனர்.</p>
-                <p><strong>மறுநாள் – பொது அசனம்:</strong> திருவிழாவைத் தொடர்ந்து வரும் திங்கட்கிழமை பொது அசனம் நடைபெறும். ஊர் மக்கள் ஒன்றுகூடி பங்கேற்கும் இந்த நிகழ்வு, நம் ஊரின் ஒற்றுமையையும் பாரம்பரியத்தையும் வெளிப்படுத்துகிறது.</p>
+                <p><strong>9ஆம் திருவிழா – தேர் திருவிழா:</strong> 9ஆம் திருவிழா இரவு, நம் ஊரின் புனிதரின் திருத்தேர் சிறப்பாக அலங்கரிக்கப்பட்டு, பக்தர்களின் பங்கேற்புடன் ஊர்வலமாக எடுத்துச் செல்லப்படுகிறது.</p>
+                <p><strong>10ஆம் திருவிழா – திருவிழா நாள்:</strong> 9ஆம் திருவிழா அடுத்த நாள், 10ஆம் திருவிழா சிறப்பாகக் கொண்டாடப்படுகிறது. திருப்பலி மற்றும் சிறப்பு வழிபாடுகள் நடைபெற்று, மக்கள் ஒன்றுகூடி இறை அருளைப் பெறுகின்றனர்.</p>
+                <p><strong>மறுநாள் – பொது ஆசனம्:</strong> திருவிழாவைத் தொடர்ந்து வரும் அடுத்த நாள் பொது அசனம்् நடைபெறும். ஊர் மக்கள் ஒன்றுகூடி பங்கேற்கும் இந்த நிகழ்வு, நம் ஊரின் ஒற்றுமையையும் பாரம்பரியத்தையும் வெளிப்படுத்துகிறது.</p>
                 <p>"புனித சவேரியாரே, எங்களுக்காக வேண்டிக்கொள்ளும்." 🙏</p>
-                <p>🍽️ <strong>காலை உணவு:</strong> 10ஆம் திருவிழா நாள்<br>🤝 <strong>பொது அசனம்:</strong> அடுத்த நாள்</p>
+                <p>🍽️ <strong>காலை உணவு:</strong> 10ஆம் திருவிழா நாள்<br>🤝 <strong>பொது அசனம்्:</strong> அடுத்த நாள்</p>
             </div>
 
             <h3>நூற்றாண்டை கடந்த நம் திருவிழா <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h3>
@@ -167,7 +168,7 @@
             <h3>கோவில் கதவுகள் <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h3>
             <p>நமது கோவில் கதவுகள் வெள்ளத்தில் அடித்து வரப்பட்ட மரங்களைப் பயன்படுத்தி செய்யப்பட்டவை என்று கூறப்படுகிறது. இந்த கதவுகள் நமது ஊரின் வரலாற்றின் சாட்சி ஆகும்.</p>
 
-            <h3>🚩 கொடிமரம் – வரலாறு <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h3>
+            <h3> கொடிமரம் – வரலாறு <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h3>
             <div class="two-column" style="margin-top: 1.5rem;">
                 <div>
                     <img src="images/கொடிமரம்.jpeg" alt="கொடிமரம்" class="section-image" onclick="openModal('images/கொடிமரம்.jpeg')">
@@ -179,32 +180,35 @@
                 </div>
             </div>
 
-            <h3>🎭 கலை அரங்கம் <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h3>
+            <h3> கலை அரங்கம் <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h3>
             <div class="two-column">
                 <div>
                     <img src="images/கலை அரங்கம்.jpeg" alt="கலை அரங்கம்" class="section-image" onclick="openModal('images/கலை அரங்கம்.jpeg')">
                 </div>
                 <div>
-                    <p>புனித சவேரியார் பிறந்த 500வது ஆண்டு விழாவை நினைவுகூரும் வகையில் இந்தக் கலை அரங்கம் அமைக்கப்பட்டது. அப்போது பங்குத்தந்தையாக அருட்திரு. இருதயராஜ் அவர்கள் பணியாற்றினார். 28 ஜனவரி 2007 அன்று திறந்து வைக்கப்பட்டது.</p>
+                    <p>புனித சவேரியார் பிறந்த 500வது ஆண்டு விழாவை நினைவுகூரும் வகையில் இந்தக் கலை அரங்கம் அமைக்கப்பட்டது. அப்போது பங்குத்தந்தையாக அருட்திரு. இருதயராஜ் அவர்கள் பணியாற்றினார்.இக்கலை அரங்கத்தை அமைப்பதற்குத் தேவையான நிதியை வழங்கி மாண்புமிகு அனிதா ராதாகிருஷ்ணன் MLA அவர்கள் உதவி செய்தார். 28 ஜனவரி 2007 அன்று திறந்து வைக்கப்பட்டது.</p>
                 </div>
             </div>
+
+            <h3>கல்யாண மண்டபம் <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h3>
+            <p>2019 ஆம் ஆண்டு, அருட்தந்தை ராயப்பன் பி. அவர்கள் அவர்களின் முயற்சியால் நமது ஊரில் கல்யாண மண்டபம் கட்டப்பட்டது. இந்த மண்டபம் நமது ஊர் மக்களின் திருமணம் மற்றும் முக்கியமான சமூக நிகழ்வுகளுக்கு பயன்பட்டு வருகிறது.</p>
         </div>
     </section>
 
     <section id="kp">
         <div class="container">
-            <h2 data-i18n="kp">பங்கில் உள்ள கெபிக்கள்</h2>
-            <p>நமது பங்கில் மூன்று முக்கியமான கெபிக்கள் (ஜெபத் தலங்கள்) உள்ளன, இறைமக்கள் ஜெபம் செய்தும் வேண்டுதல்களை சமர்ப்பிக்கும் புனிதமான இடங்கள்.</p>
+            <h2 data-i18n="kp">பங்கில் உள்ள கெபிகள்</h2>
+            <p>நமது பங்கில் மூன்று முக்கியமான கெபிகள் (ஜெபத் தலங்கள்) உள்ளன, இறைமக்கள் ஜெபம் செய்தும் வேண்டுதல்களை சமர்ப்பிக்கும் புனிதமான இடங்கள்.</p>
 
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="images/சூசையப்பர் கெபி photos.jpeg" alt="சூசையப்பர் கெபி photos">
+                    <img src="images/லூர்து மாதா கெபி.jpeg" alt="லூர்து மாதா கெபி">
                     <div class="gallery-item-content">
-                        <h4>சூசையப்பர் கெபி <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h4>
-                        <p><strong>தொடங்கிய ஆண்டு:</strong> 2026</p>
-                        <p><strong>பணிக்காலம்:</strong> அருட்திரு. Paul Roman S.</p>
-                        <p>நமது பங்கின் பிரதான கெபி ஆவது. புனித சூசையப்பர் நமது பாதுகாவலர் ஆவார்.</p>
-                        <button class="view-button" onclick="openModal('images/சூசையப்பர் கெபி photos.jpeg')">பார்க்க</button>
+                        <h4>லூர்து மாதா கெபி <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h4>
+                        <p><strong>லூர்து மாதா கெபி:</strong> அன்னை மரியாவை சிறப்பிக்கும் ஜெபத் தலம்</p>
+                        <p>இறைமக்கள் இங்கு வந்து ஜெபித்து, குடும்ப நலன் மற்றும் பல்வேறு வேண்டுதல்களை இறைவனிடம் சமர்ப்பிக்கின்றனர்.</p>
+                        <p>லூர்து மாதா நமது பாதுகாவலி ஆவார்.</p>
+                        <button class="view-button" onclick="openModal('images/லூர்து மாதா கெபி.jpeg')">பார்க்க</button>
                     </div>
                 </div>
 
@@ -212,21 +216,21 @@
                     <img src="images/புனித அந்தோணியார் கெபி.jpeg" alt="புனித அந்தோணியார் கெபி">
                     <div class="gallery-item-content">
                         <h4>புனித அந்தோணியார் கெபி <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h4>
-                        <p><strong>தொடங்கிய ஆண்டு:</strong> 1989</p>
-                        <p><strong>பணிக்காலம்:</strong> அருட்திரு. M.S. அந்தோணி</p>
+                        <p><strong>கட்டப்பட்ட ஆண்டு:</strong> 1989</p>
+                        <p><strong> 1989 ஆம் ஆண்டு, அருட்திரு. M.S. அந்தோணி அவர்களின் பணிக்காலத்தில் புனித அந்தோணியார் கெபி கட்டப்பட்டது.</p>
                         <p>புனித அந்தோணியார் நமது வழிகாட்டி ஆவார். பல்வேறு நோக்கங்களுக்கு இறைமக்கள் இங்கு வந்து ஜெபிக்கின்றனர்.</p>
                         <button class="view-button" onclick="openModal('images/புனித அந்தோணியார் கெபி.jpeg')">பார்க்க</button>
                     </div>
                 </div>
 
                 <div class="gallery-item">
-                    <img src="images/லூர்து மாதா கெபி.jpeg" alt="லூர்து மாதா கெபி">
+                    <img src="images/சூசையப்பர் கெபி photos.jpeg" alt="சூசையப்பர் கெபி photos">
                     <div class="gallery-item-content">
-                        <h4>லூர்து மாதா கெபி <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h4>
-                        <p><strong>பூஜனை இடம்:</strong> அன்னை மரியாவை சிறப்பிக்கும் ஜெபத் தலம்</p>
-                        <p>இறைமக்கள் இங்கு வந்து ஜெபித்து, குடும்ப நலன் மற்றும் பல்வேறு வேண்டுதல்களை இறைவனிடம் சமர்ப்பிக்கின்றனர்.</p>
-                        <p>லூர்து மாதா நமது பாதுகாவலி ஆவார்.</p>
-                        <button class="view-button" onclick="openModal('images/லூர்து மாதா கெபி.jpeg')">பார்க்க</button>
+                        <h4>சூசையப்பர் கெபி <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h4>
+                        <p><strong>கட்டப்பட்ட ஆண்டு:</strong> 2026</p>
+                        <p><strong>2026 ஆம் ஆண்டு, அருட்திரு. Paul Roman S. அவர்களின் பணிக்காலத்தில் புனித சூசையப்பர் கெபி கட்டப்பட்டது</p>
+                        <p>நமது பங்கின் பிரதான கெபி ஆவது. புனித சூசையப்பர் நமது பாதுகாவலர் ஆவார்.</p>
+                        <button class="view-button" onclick="openModal('images/சூசையப்பர் கெபி photos.jpeg')">பார்க்க</button>
                     </div>
                 </div>
             </div>
@@ -297,7 +301,7 @@
                     <div class="info-box">
                         <p>திருமணம் ஆன ஆண்களைக் கொண்ட சபையாக புனித அந்தோணியார் சபை, நமது ஊரின் ஆன்மிக வாழ்வில் முக்கிய இடம் பெற்றுள்ளது।</p>
                         <p><strong>திருவிழா:</strong> ஒவ்வொரு ஆண்டும் ஜூன் 13 அன்று சிறப்பாக நடைபெறுகிறது।</p>
-                        <p><strong>விசேஷம்:</strong> திருவிழா நாளன்று இரவு பொதுமக்களுக்கு அசனம் வழங்கப்படும்.</p>
+                        <p><strong>விசேஷம்:</strong> திருவிழா நாளன்று இரவு பொதுமக்களுக்கு அசனம்् வழங்கப்படும்.</p>
                     </div>
                 </div>
             </div>
@@ -342,7 +346,8 @@
                 <p><strong>6. ஆறாம் பங்குத்தந்தை</strong><br>அருட்திரு. பிரான்சிஸ் (1975–1981)</p>
                 <p><strong>7. ஏழாம் பங்குத்தந்தை</strong><br>அருட்திரு. சேவியர் இக்னேஷியஸ் (1981–1985)</p>
                 <p><strong>8. எட்டாம் பங்குத்தந்தை</strong><br>அருட்திரு. அகஸ்டின் (1985–1991)</p>
-                <p><strong>9. ஒன்பதாம் பங்குத்தந்தை</strong><br>அருட்திரு. பீட்டர் ராஜா (1991)</p>
+                <p><strong>9. ஒன்பதாம் பங்குத்தந்தை</strong><br>அருட்திரு. பீட்டர் ராஜா(1991)</p>
+
                 <p><strong>10. பத்தாம் பங்குத்தந்தை</strong><br>அருட்திரு. M.S. அந்தோணி (1991–1997)</p>
                 <p><strong>11. பதினொன்றாம் பங்குத்தந்தை</strong><br>அருட்திரு. பர்னபாஸ் (1997–1998)</p>
                 <p><strong>12. பன்னிரண்டாம் பங்குத்தந்தை</strong><br>அருட்திரு. ரெமிஜியுஸ் S. லியோன் (1998–2002)</p>
@@ -363,8 +368,8 @@
                 <div>
                     <p><strong>தொடங்கிய நாள்:</strong> 14 ஜனவரி 2002</p>
                     <p><strong>தொடங்கியவர்:</strong> அருட்திரு. ரெமிஜியுஸ் S. லியோன்</p>
-                    <p><strong>கட்டிடம் முடிந்தவர்:</strong> அருட்திரு. M.J. இருதயராஜ்</p>
-                    <p><strong>ஆசீர்வாதம்:</strong> 29 ஆகஸ்ட் 2004 | ஆயர் Peter Fernando</p>
+                    <p><strong>கட்டி முடிந்தவர்:</strong> அருட்திரு. M.J. இருதயராஜ்</p>
+                    <p><strong> 29 ஆகஸ்ட் 2004 | ஆயர் Peter Fernando.  இதற்கு முன்பு, நமது ஊரில் மிகப் பெரிய பங்குத்தந்தையர் இல்லம் இருந்தது. அது அக்காலத்தில் கட்டப்பட்ட மிகப் பெரிய கட்டிடமாக விளங்கியது.</p>
                 </div>
             </div>
 
@@ -386,7 +391,7 @@
             <h2 style="margin-top: 3rem;" data-i18n="sub-church">புனித ஆரோக்கியநாதர் ஆலயம் (துணை பங்கு) <button class="voice-btn" onclick="speakHeadingContent(this)">🔊</button></h2>
             <div class="two-column">
                 <div>
-                    <img src="images/புனித அரோக்கியநாதர் ஆலயம்.jpeg" alt="புனித அரோக்கியநாதர் ஆலயம்" class="section-image" onclick="openModal('images/புனித அரோக்கியநாதர் ஆலயம்.jpeg')">
+                    <img src="images/புனித ஆரோக்கியநாதர் ஆலயம்.jpeg" alt="புனித ஆரோக்கியநாதர் ஆலயம்" class="section-image" onclick="openModal('images/புனித அரோக்கியநாதர் ஆலயம்.jpeg')">
                 </div>
                 <div>
                     <p><strong>ஆலய வரலாறு:</strong></p>
@@ -450,10 +455,10 @@
                         <p><strong>📮 முகவரி:</strong></p>
                         <p>சேதுக்குவாய்த்தான்</p>
                         <p>குரும்பூர் வழி</p>
-                        <p><strong>핀 கோடு:</strong> 628 207</p>
-                        <p><strong>மாவட்டम्:</strong> Thoothukudi</p>
+                        <p><strong>pin code:</strong> 628 207</p>
+                        <p><strong>district:</strong> Thoothukudi</p>
                         <p><strong>மாநிலம்:</strong> தமிழ்நாடு, இந்தியா</p>
-                        <p style="margin-top: 1.5rem; color: #c41e3a;"><strong>📱 தொடர்பு:</strong> @Snowin - 6382835276</p>
+                        <p style="margin-top: 1.5rem; color: #c41e3a;"></p>
                         <a href="https://maps.google.com/?q=Sethukkuvaythan,+628207" target="_blank" style="display: inline-block; background: #2c5aa0; color: white; padding: 0.8rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: 600; margin-top: 1rem; transition: background 0.3s;">🗺️ Google Maps இல் பார்க்க</a>
                     </div>
                 </div>
@@ -471,15 +476,16 @@
                 <p>"நீங்கள் உலகெங்கும் சென்று, எல்லாப் படைப்பினருக்கும் நற்செய்தியைப் பறைசாற்றுங்கள்." — மாற்கு 16:15</p>
             </div>
             <div style="text-align: right;">
-                <h4 style="margin-bottom: 0.5rem;">📞 தொடர்பு</h4>
-                <a href="tel:+916382835276" style="display: inline-block; background: #c41e3a; color: white; padding: 0.8rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: 600; transition: all 0.3s; font-size: 1rem;">@Snowin 📱</a>
+                <h4 style="margin-bottom: 0.5rem;"></h4>
+                <a href="tel:+916382835276" style="display: inline-block; background: #c41e3a; color: white; padding: 0.8rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: 600; transition: all 0.3s; font-size: 1rem;">Developed by @Snowin durai pandi</a>
             </div>
         </div>
     </footer>
 
     <button id="toggle-chat">💬</button>
     <div id="chat-widget" class="hidden">
-        <div class="chat-header">
+        <div class="chat-header" style="position: relative;">
+            <button id="close-chat" style="position: absolute; right: 10px; top: 10px; background: rgba(255,255,255,0.2); border: none; color: white; font-size: 1.5rem; cursor: pointer; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.3s;" onclick="document.getElementById('chat-widget').classList.add('hidden'); document.getElementById('toggle-chat').classList.remove('hidden');">✕</button>
             <h3 style="margin: 0; font-size: 1.2rem;">🤖 AI ஆலய உதவி</h3>
             <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem;">ஆலயம் பற்றி கேளுங்கள்</p>
         </div>
