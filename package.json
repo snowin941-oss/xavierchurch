@@ -1,9 +1,10 @@
 {
   "name": "xavierchurch",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "St. Xavier's Church Website - Sethukkuvaythan, Tamil Nadu",
+  "main": "index.html",
   "scripts": {
+    "build": "echo 'Static HTML site - no build needed'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
