@@ -1,7 +1,5 @@
 {
   "version": 2,
-  "buildCommand": "echo 'Static HTML project'",
-  "outputDirectory": ".",
   "headers": [
     {
       "source": "/(.*)",
