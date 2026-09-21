@@ -3,7 +3,7 @@ Allow: /
 Disallow: /admin
 Disallow: /private
 
-Sitemap: https://sxavierchurch.org/sitemap.xml
+Sitemap: https://xavierchurch.vercel.app/sitemap.xml
 
 User-agent: Googlebot
 Allow: /

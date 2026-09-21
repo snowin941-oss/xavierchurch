@@ -5,12 +5,12 @@
 
     <!-- Main Page -->
     <url>
-        <loc>https://sxavierchurch.org/</loc>
+        <loc>https://xavierchurch.vercel.app/</loc>
         <lastmod>2026-09-21</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <image:image>
-            <image:loc>https://sxavierchurch.org/images/புனித சவேரியார் ஆலயம்.jpeg</image:loc>
+            <image:loc>https://xavierchurch.vercel.app/images/புனித சவேரியார் ஆலயம்.jpeg</image:loc>
             <image:title>புனித சவேரியார் ஆலயம் - சேதுக்குவாய்த்தான்</image:title>
         </image:image>
         <mobile:mobile/>
@@ -18,7 +18,7 @@
 
     <!-- Church Information Section -->
     <url>
-        <loc>https://sxavierchurch.org/#church</loc>
+        <loc>https://xavierchurch.vercel.app/#church</loc>
         <lastmod>2026-09-21</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
@@ -27,7 +27,7 @@
 
     <!-- History Section -->
     <url>
-        <loc>https://sxavierchurch.org/#history</loc>
+        <loc>https://xavierchurch.vercel.app/#history</loc>
         <lastmod>2026-09-21</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
@@ -36,7 +36,7 @@
 
     <!-- Chapels Section -->
     <url>
-        <loc>https://sxavierchurch.org/#kp</loc>
+        <loc>https://xavierchurch.vercel.app/#kp</loc>
         <lastmod>2026-09-21</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -45,7 +45,7 @@
 
     <!-- Apostolic Groups Section -->
     <url>
-        <loc>https://sxavierchurch.org/#groups</loc>
+        <loc>https://xavierchurch.vercel.app/#groups</loc>
         <lastmod>2026-09-21</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -54,7 +54,7 @@
 
     <!-- Buildings and Organizations Section -->
     <url>
-        <loc>https://sxavierchurch.org/#buildings</loc>
+        <loc>https://xavierchurch.vercel.app/#buildings</loc>
         <lastmod>2026-09-21</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -63,7 +63,7 @@
 
     <!-- Location Section -->
     <url>
-        <loc>https://sxavierchurch.org/#location</loc>
+        <loc>https://xavierchurch.vercel.app/#location</loc>
         <lastmod>2026-09-21</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
